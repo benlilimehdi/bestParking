@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.S
 import org.springframework.data.domain.Example;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.esprit.parking.entities.Place;
 import com.esprit.parking.repository.PlaceRepository;
@@ -43,7 +44,7 @@ public class PlaceMetierImpl implements PlaceMetier {
 		return (int) placeRepository.findByFreePlaceReturnStream(0).count();
 		
 	}
-
+	@Transactional(readOnly=true)
 	public Optional<Place> getFreePlaceByFloorAsc() {
 		Optional<Place> p = null ;
 		

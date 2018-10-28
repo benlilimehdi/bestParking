@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.esprit.parking.entities.Subscribers;
 import com.esprit.parking.repository.SubscribersRepository;
@@ -30,7 +31,7 @@ public class SubscriberMetierImpl implements SubscriberMetier {
 		 subscribersRepository.save(p);
 	}
 
-	@Override
+	@Transactional(readOnly=true)
 	public Subscribers getSubscribersByID(long idSubscribers) {
 		// TODO Auto-generated method stub
 		return subscribersRepository.getOne(idSubscribers);

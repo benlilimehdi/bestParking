@@ -38,14 +38,12 @@ public class TypeSubscriptionService {
 	
 	
 	///////////////////
-	@RequestMapping(value = "/getTypeSubscriptionByLibelle", method = RequestMethod.POST)
-	@Transactional(readOnly = true)
-	public @ResponseBody Optional<TypeSubscription> getSubscriptionByLibelle( @RequestParam(value="libellee") String libelle) {
+	@RequestMapping(value = "/getTypeSubscriptionById", method = RequestMethod.POST)
+	//@Transactional(readOnly = true)
+	@Transactional
+	public  TypeSubscription getSubscriptionType( @RequestParam(value="idType") int idType) {
+		TypeSubscription t = typeSubscriptionRepository.findById(idType).get();
 		
-		Optional<TypeSubscription> t =null;
-		try (Stream<TypeSubscription> stream = typeSubscriptionRepository.getTypeByLibelle(libelle)) {
-			t=stream.findFirst();
-		}
 		
 		return t;
 	}

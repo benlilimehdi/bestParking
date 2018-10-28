@@ -33,7 +33,7 @@ public class TypeSubscriptionMetierImpl implements TypeSubscriptionMetier {
 		typeSubscriptionRepository.save(p);
 	}
 
-	@Transactional(readOnly = true)
+	@Override
 	public TypeSubscription getTypeSubscriptionByID(int idTypeSubscription) {
 		return typeSubscriptionRepository.getOne(idTypeSubscription);
 	}

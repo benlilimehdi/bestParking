@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -12,10 +13,11 @@ import javax.persistence.ManyToOne;
 public class Ticket {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long idTicket;
 	private Date dateEntree;
 	private Date dateSortie;
+	private Date datePayement;
 	private Float prix;
 	private boolean isPayed;
 	
@@ -32,6 +34,15 @@ public class Ticket {
 		this.prix = prix;
 		this.isPayed = isPayed;
 		this.place = place;
+	}
+	public Ticket(Date dateEntree, Date dateSortie, Float prix, boolean isPayed, Place place,Date datePayement) {
+		super();
+		this.dateEntree = dateEntree;
+		this.dateSortie = dateSortie;
+		this.prix = prix;
+		this.isPayed = isPayed;
+		this.place = place;
+		this.datePayement = datePayement;
 	}
 
 	public Ticket(long idTicket, Date dateEntree, Date dateSortie, Float prix, boolean isPayed, Place place) {
@@ -102,6 +113,12 @@ public class Ticket {
 
 	public void setPlace(Place place) {
 		this.place = place;
+	}
+	public Date getDatePayement() {
+		return datePayement;
+	}
+	public void setDatePayement(Date datePayement) {
+		this.datePayement = datePayement;
 	}
 	
 

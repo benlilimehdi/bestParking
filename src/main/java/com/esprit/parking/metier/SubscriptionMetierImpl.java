@@ -4,11 +4,12 @@ import java.util.Collection;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.esprit.parking.entities.Subscribers;
 import com.esprit.parking.entities.Subscription;
 import com.esprit.parking.repository.SubscriptionRepository;
-
+@Service
 public class SubscriptionMetierImpl  implements SubscriptionMetier{
 
 	@Autowired

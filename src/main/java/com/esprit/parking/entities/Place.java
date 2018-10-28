@@ -19,7 +19,7 @@ public class Place {
 	
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long idPlace;
 	private int etage;
 	private int number;

@@ -1,6 +1,7 @@
 package com.esprit.parking.services;
 
 import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
@@ -15,21 +16,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.esprit.parking.entities.Place;
 import com.esprit.parking.metier.PlaceMetier;
-import com.esprit.parking.metier.PlaceMetierImpl;
 import com.esprit.parking.repository.PlaceRepository;
 
 @RestController
 public class PlaceService {
 
-	@Autowired
-	private PlaceRepository placeRepository;
+	
 	@Autowired
 	private PlaceMetier placeMetier;
+	@Autowired
+	private PlaceRepository placeRepository;
 
 	@RequestMapping(value = "/addPlace", method = RequestMethod.POST)
 	public Place savePlace(Place p) {
 		// p.setParking(new Parking(1,"FirstParking",20));
-		return placeRepository.save(p);
+		return placeMetier.addPlace(p);
 
 	}
 
@@ -56,16 +57,10 @@ public class PlaceService {
 		return l;
 	}
 
-	
 	@RequestMapping(value = "/countFreePlaces")
 	@Transactional(readOnly = true)
 	public int coutFreePlace() {
-		int x = 0;
-		try (Stream<Place> stream = placeRepository.getFreePlaceByFloorAsca()) {
-			x = (int) stream.count();
-		}
-		// p.setParking(new Parking(1,"FirstParking",20));
-		return x;
+		return placeMetier.countFreePlaces();
 	}
 
 }

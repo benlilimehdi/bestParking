@@ -19,50 +19,31 @@ import com.esprit.parking.repository.TypeSubscriptionRepository;
 
 @RestController
 public class TypeSubscriptionService {
-	
+
 	@Autowired
-	private TypeSubscriptionMetierImpl typeSubscriptionMetier ;
+	private TypeSubscriptionMetierImpl typeSubscriptionMetier;
 	@Autowired
 	private TypeSubscriptionRepository typeSubscriptionRepository;
+
 	
 	
 	@RequestMapping(value = "getAllTypeSubscription", method = RequestMethod.GET)
 	public List<TypeSubscription> getAllTypeSubscription() {
 		return typeSubscriptionMetier.getAllTypeSubscription();
 	}
+
 	
-	
-	
-	
-	
-	
-	
-	///////////////////
 	@RequestMapping(value = "/getTypeSubscriptionById", method = RequestMethod.POST)
-	//@Transactional(readOnly = true)
 	@Transactional
-	public  TypeSubscription getSubscriptionType( @RequestParam(value="idType") int idType) {
+	public TypeSubscription getSubscriptionType(@RequestParam(value = "idType") int idType) {
 		TypeSubscription t = typeSubscriptionRepository.findById(idType).get();
-		
-		
 		return t;
 	}
-	////////////////////
-	
+
 	@RequestMapping(value = "editPriceTypeSubscription", method = RequestMethod.POST)
-	@Transactional(readOnly = true)
-	public void editPriceTypeSubscription( @RequestParam(value = "idtypeSubscription")int idtypeSubscription,@RequestParam(value = "price")float price) {
-		
-		
-		TypeSubscription type=typeSubscriptionMetier.getTypeSubscriptionByID(idtypeSubscription);
-		System.out.println("****************"+type.getIdType()+"***"+type.getPrix());
-		type.setPrix(price);
-		System.out.println("****************"+type.getIdType()+"***"+type.getPrix());
-		 //typeSubscriptionMetier.editTypeSubscription(type);
-		typeSubscriptionRepository.save(type);
+	public void editPriceTypeSubscription(@RequestParam(value = "idtypeSubscription") int idtypeSubscription,
+			@RequestParam(value = "price") float price) {
+		typeSubscriptionMetier.editPriceTypeSubscription(idtypeSubscription, price);
 	}
-	
-	
-	
 
 }

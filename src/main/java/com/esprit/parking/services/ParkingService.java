@@ -17,7 +17,11 @@ public class ParkingService  {
 	@RequestMapping(value="/addparking",method=RequestMethod.GET)
 	public Parking saveparking (Parking p) {
 		return parkingRepository.save(p);
-		
 	}
+	
+	
+	
+	
+	
 
 }

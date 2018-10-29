@@ -2,6 +2,7 @@ package com.esprit.parking.metier;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Sort;
@@ -41,9 +42,14 @@ public class PlaceMetierImpl implements PlaceMetier {
 	}
 
 	public int countFreePlaces() {
-		return (int) placeRepository.findByFreePlaceReturnStream(0).count();
-		
+		int x = 0;
+		try (Stream<Place> stream = placeRepository.getFreePlaceByFloorAsca()) {
+			x = (int) stream.count();
+		}
+		// p.setParking(new Parking(1,"FirstParking",20));
+		return x;		
 	}
+	@Override
 	@Transactional(readOnly=true)
 	public Optional<Place> getFreePlaceByFloorAsc() {
 		Optional<Place> p = null ;

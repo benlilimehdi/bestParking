@@ -2,6 +2,7 @@ package com.esprit.parking.metier;
 
 import java.util.Collection;
 
+
 import com.esprit.parking.entities.Ticket;
 
 public interface TicketMetier {
@@ -13,7 +14,9 @@ public interface TicketMetier {
 	
 	public Collection<Ticket> getAllTicket(int page, int size);
 	
-	public Ticket payTicket(Ticket p, float money);
+	public String payTicket(long idTicket, float money);
+	public String checkIn();
+	public String checkOut(long idTicket);
 	
 	
 	

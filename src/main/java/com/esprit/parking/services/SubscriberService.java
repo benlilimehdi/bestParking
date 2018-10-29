@@ -20,7 +20,6 @@ public class SubscriberService {
 	@Autowired
 	private SubscriberMetierImpl subscriberMetier;
 	
-	
 
 	@RequestMapping(value = "/inscriptionSubscriber", method = RequestMethod.POST)
 	public void InscriptionSubscripber(Subscribers p) {
@@ -28,7 +27,9 @@ public class SubscriberService {
 
 	}
 	
-	
-	
+	@RequestMapping(value = "/editSubscriber", method = RequestMethod.POST)
+	public void editSubscripber(Subscribers p) {
+		 subscriberMetier.editSubscribers(p);
+	}
 	
 }

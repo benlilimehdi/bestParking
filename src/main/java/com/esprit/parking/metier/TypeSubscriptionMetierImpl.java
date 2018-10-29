@@ -34,6 +34,7 @@ public class TypeSubscriptionMetierImpl implements TypeSubscriptionMetier {
 	}
 
 	@Override
+	@Transactional(readOnly=true)
 	public TypeSubscription getTypeSubscriptionByID(int idTypeSubscription) {
 		return typeSubscriptionRepository.getOne(idTypeSubscription);
 	}
@@ -56,6 +57,16 @@ public class TypeSubscriptionMetierImpl implements TypeSubscriptionMetier {
 		return map;
 		
 		
+	}
+
+	@Override
+	public String editPriceTypeSubscription(int idType, float price) {
+		TypeSubscription type=getTypeSubscriptionByID(idType);
+		type.setPrix(price);
+		 editTypeSubscription(type);
+		 return "price edited";
+		 
+	
 	}
 	
 

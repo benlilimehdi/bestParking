@@ -14,6 +14,6 @@ public interface TypeSubscriptionMetier {
 	
 	public List<TypeSubscription> getAllTypeSubscription();
 	
-	
+	public String editPriceTypeSubscription(int idType,float price);
 
 }

@@ -1,13 +1,9 @@
 package com.esprit.parking.metier;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Sort;
-import org.springframework.data.domain.Example;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -40,7 +36,7 @@ public class PlaceMetierImpl implements PlaceMetier {
 		// TODO Auto-generated method stub
 		return placeRepository.getOne(idPlace);
 	}
-
+	@Override
 	public int countFreePlaces() {
 		int x = 0;
 		try (Stream<Place> stream = placeRepository.getFreePlaceByFloorAsca()) {

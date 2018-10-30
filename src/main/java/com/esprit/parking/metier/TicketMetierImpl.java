@@ -1,6 +1,7 @@
 package com.esprit.parking.metier;
 
 import java.util.Calendar;
+
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
@@ -20,8 +21,6 @@ public class TicketMetierImpl implements TicketMetier {
 
 	@Autowired
 	private TicketRepository ticketRepository;
-	
-	
 	@Autowired
 	private PlaceMetierImpl placeMetier;
 	@Autowired

@@ -1,17 +1,15 @@
 package com.esprit.parking.metier;
 
 import java.util.HashMap;
+
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Stream;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.esprit.parking.entities.TypeSubscription;
 import com.esprit.parking.repository.TypeSubscriptionRepository;

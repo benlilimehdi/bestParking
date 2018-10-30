@@ -125,11 +125,7 @@ public class SubscriptionMetierImpl  implements SubscriptionMetier{
 		return "Probelm of check out! pls contact the administration;";
 	}
 
-	@Override
-	public Subscription getNewSubscription(Subscription p) {
-		return null;
-	}
-
+	
 	@Override
 	public List<Subscription> getAllSubscriptionByIdSubscriber(long idSubscriber) {
 		
